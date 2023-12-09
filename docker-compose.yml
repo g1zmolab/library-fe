@@ -1,0 +1,9 @@
+version: "3"
+services:
+  strapi:
+    container_name: gizmolib
+    image: g1zmolab/gizmolib-fe:latest
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - 3000:3000
