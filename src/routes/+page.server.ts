@@ -5,7 +5,7 @@ import { env } from '$env/dynamic/private'
 export const load = async ({ url }: any) => {
 
   const page = Number(url.searchParams.get('page')) || 1
-  const pageSize = Number(url.searchParams.get('pageSize')) || 5
+  const pageSize = Number(url.searchParams.get('pageSize')) || 10
   const search = url.searchParams.get('q')
 
   const fetchItems = async () => {
@@ -14,6 +14,13 @@ export const load = async ({ url }: any) => {
       pagination: {
         page: page,
         pageSize: pageSize,
+      },
+      filters: {
+        quantities: {
+          id: {
+            $notNull: true
+          }
+        }
       },
       fields: ['title', 'yearPublished'],
       populate: {

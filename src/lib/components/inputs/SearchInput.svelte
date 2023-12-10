@@ -9,7 +9,7 @@
   id="search-field"
   name={name}
   autocomplete="off"
-  placeholder="Enter a book title"
+  placeholder="Αναζήτηση..."
   bind:value
   on:input
 />

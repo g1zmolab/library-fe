@@ -9,7 +9,10 @@
 
 <svelte:head>
   <title>Αρχική σελίδα - gizmolib</title>
-  <meta name="description" content="Ψηφιακός Κατάλογος Κινηματικών Βιβλιoθηκών" />
+  <meta
+    name="description"
+    content="Ψηφιακός Κατάλογος Κινηματικών Βιβλιoθηκών"
+  />
 </svelte:head>
 
 <form action="/" method="get">
@@ -29,14 +32,16 @@
   {/each}
 </div>
 
-<div class="float-right">
-  {#each Array(data.api.meta.pagination.pageCount) as _, key}
-    <a href="?page={key + 1}{data.search ? `&q=${data.search}` : ''}">
-      {#if data.api.meta.pagination.page === key + 1}
-        <span class="bg-zinc-500 px-4 py-2 rounded-sm">{key + 1}</span>
-      {:else}
-        <span class="bg-zinc-600 px-4 py-2 rounded-sm">{key + 1}</span>
-      {/if}
-    </a>
-  {/each}
-</div>
+{#if data.api.meta.pagination.pageCount > 1}
+  <div class="float-right">
+    {#each Array(data.api.meta.pagination.pageCount) as _, key}
+      <a href="?page={key + 1}{data.search ? `&q=${data.search}` : ''}">
+        {#if data.api.meta.pagination.page === key + 1}
+          <span class="bg-zinc-500 px-4 py-2 rounded-sm">{key + 1}</span>
+        {:else}
+          <span class="bg-zinc-600 px-4 py-2 rounded-sm">{key + 1}</span>
+        {/if}
+      </a>
+    {/each}
+  </div>
+{/if}
