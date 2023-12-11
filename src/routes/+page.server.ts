@@ -87,6 +87,9 @@ export const load = async ({ url }: any) => {
 
   return {
     api: fetchItems(),
-    search: search
+    searchParams: {
+      searchQuery: search,
+      searchField: searchField,
+    }
   }
 }
