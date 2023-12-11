@@ -3,15 +3,6 @@
   import BookItem from "$lib/components/BookItem.svelte";
 
   export let data;
-
-  let searchParams = "";
-
-  if (data.searchParams.searchQuery) {
-    searchParams += `q=${data.searchParams.searchQuery}&`;
-  }
-  if (data.searchParams.searchField) {
-    searchParams += `search=${data.searchParams.searchField}&`;
-  }
 </script>
 
 <svelte:head>
@@ -49,7 +40,7 @@
 {#if data.api.meta.pagination.pageCount > 1}
   <div class="float-right">
     {#each Array(data.api.meta.pagination.pageCount) as _, key}
-      <a href="?{searchParams}page={key + 1}">
+      <a href="?{data.searchParams.generated}page={key + 1}">
         {#if data.api.meta.pagination.page === key + 1}
           <span class="bg-zinc-500 px-4 py-2 rounded-sm">{key + 1}</span>
         {:else}

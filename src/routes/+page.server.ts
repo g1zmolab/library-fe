@@ -85,11 +85,20 @@ export const load = async ({ url }: any) => {
     return data;
   }
 
+  let searchParamsString = "";
+
+  if (search) {
+    searchParamsString += `q=${search}&search=${searchField}&`;
+  }
+
+  console.log(searchParamsString)
+
   return {
     api: fetchItems(),
     searchParams: {
       searchQuery: search,
       searchField: searchField,
+      generated: searchParamsString
     }
   }
 }
