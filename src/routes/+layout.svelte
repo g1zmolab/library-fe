@@ -9,7 +9,7 @@
     <div class="mx-4 sm:mx-0">
       <a href="/">
         <div class="text-4xl font-bold mb-2">gizmolib</div>
-        <div class="italic text-sm">Ψηφιακός Κατάλογος Κινηματικών Βιβλιoθηκών</div>
+        <div class="italic text-sm sm:text-base">Ψηφιακός Κατάλογος Κινηματικών Βιβλιoθηκών</div>
       </a>
     </div>
     <div class="hidden sm:block">

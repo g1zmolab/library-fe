@@ -5,7 +5,7 @@ import { env } from '$env/dynamic/private'
 export const load = async ({ url }: any) => {
 
   const page = Number(url.searchParams.get('page')) || 1
-  const pageSize = Number(url.searchParams.get('pageSize')) || 10
+  const searchField = url.searchParams.get('search') || 'title'
   const search = url.searchParams.get('q')
 
   const fetchItems = async () => {
@@ -13,7 +13,7 @@ export const load = async ({ url }: any) => {
     const query = {
       pagination: {
         page: page,
-        pageSize: pageSize,
+        pageSize: 10,
       },
       filters: {
         quantities: {
@@ -41,11 +41,29 @@ export const load = async ({ url }: any) => {
       },
     }
 
-    if (search) {
-      query.filters = {
-        title: {
-          $containsi: search,
-        },
+    if (searchField === 'title') {
+      query.filters.title = {
+        $containsi: search
+      }
+    } else if (searchField === 'author') {
+      query.filters.authors = {
+        name: {
+          $containsi: search
+        }
+      }
+    } else if (searchField === 'publisher') {
+      query.filters.publisher = {
+        name: {
+          $containsi: search
+        }
+      }
+    } else if (searchField === 'library') {
+      query.filters.quantities = {
+        library: {
+          name: {
+            $containsi: search
+          }
+        }
       }
     }
 
