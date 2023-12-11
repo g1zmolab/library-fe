@@ -15,9 +15,7 @@
   />
 </svelte:head>
 
-<form action="/" method="get">
-  <SearchInput bind:value name="q" />
-</form>
+<SearchInput bind:value name="q" />
 
 <div class="my-6">
   <div class="my-2 text-zinc-300 italic">
